@@ -23,15 +23,25 @@ in
   programs.neovim = {
     enable = true;
     extraLuaConfig = ''
-      dofile("${luaNeovimLab}/init.lua")
+      local is_dev_mode = os.getenv("NIX_DEV_MODE")
+
+      if is_dev_mode then
+          dofile(os.getenv("HOME") .. "/Lab/LuaLab/${luaNeovimLab.repo}/init.lua")
+      else
+          dofile("${luaNeovimLab}/init.lua")
+      end
+
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       vim-nix
       yankring
+      ale
 
       nvim-web-devicons
       nvim-notify
+
+      nvim-dap
 
       nvim-cmp
       cmp-nvim-lsp
@@ -39,12 +49,52 @@ in
       cmp-path
       cmp-cmdline
       cmp_luasnip
+      awesome-vim-colorschemes
 
       vim-fugitive
       auto-pairs
       vim-surround
       nerdcommenter
       nvim-treesitter
+      nvim-treesitter-parsers.c
+      nvim-treesitter-parsers.lua
+      nvim-treesitter-parsers.python
+      nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.regex
+      nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.markdown
+      nvim-treesitter-parsers.markdown_inline
+
+
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "null-ls.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "jose-elias-alvarez";
+          repo = "null-ls.nvim";
+          rev = "master";
+          sha256 = "sha256-cWA0rzkOp/ekVKaFee7iea1lhnqKtWUIU+fW5M950wI=";
+        };
+      })
+
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "plenary.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "nvim-lua";
+          repo = "plenary.nvim";
+          rev = "master";
+          sha256 = "sha256-HJCVGYXCgUePhXuC2n85YP/i4KEKCpJl59h/gENQX6I=";
+        };
+      })
+
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "formatter.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "mhartington";
+          repo = "formatter.nvim";
+          rev = "master";
+          sha256 = "sha256-C+TXwyNrAXIaq3oKqkLZFmQx1/1my/fV5Kzzh6gOuR4=";
+        };
+      })
 
       (pkgs.vimUtils.buildVimPlugin {
         name = "lightline";
@@ -139,6 +189,7 @@ in
   home.stateVersion = "22.11";
 
   home.packages = with pkgs; [
+    docker-compose
     htop
     git
     openssh
@@ -159,9 +210,7 @@ in
 
   home.sessionVariables = {
     TERM = "xterm-256color";
-
     EDITOR = "vim";
-
   };
 
   programs.home-manager.enable = true;
