@@ -2,9 +2,8 @@
 
 {
 
-  config.wayland.windowManager.hyprland.enable = true;
-
-  config.wayland.windowManager.hyprland.extraConfig = ''
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.extraConfig = ''
     monitor=,preferred,auto,auto
 
     decoration {
@@ -33,7 +32,7 @@
         layout = dwindle
     }
 
-    exec-once = waybar & dunst & swww init && swww img ~/Wallpaper/wallhaven-rrw3mm.png
+    exec-once = waybar & swww init && swww img ./Wallpaper/wallhaven-rrw3mm.png
 
     $mainMod = SUPER
 

@@ -1,13 +1,5 @@
 { lib, config, pkgs, ... }:
 
-let
-  stylix = pkgs.fetchFromGitHub {
-    owner = "danth";
-    repo = "stylix";
-    rev = "master";
-    sha256 = "sha256-Jrizp/nITbul2HBIraQRDw5lyJnzTsj0K9wZUFYX2gg=";
-  };
-in
 {
 
   imports = [
@@ -15,28 +7,11 @@ in
     ./wayland.nix
     ./rofi.nix
     ./oh-myzsh.nix
-    stylix.homeManagerModules.stylix
+    ./stylix.nix
+    ./dunst.nix
+    ./waybar
   ];
 
-
-  #stylix.image = pkgs.fetchurl {
-  #url = "https://w.wallhaven.cc/full/4o/wallhaven-4o3xmp.jpg";
-  #sha256 = "sha256-fWTMp4fIQ70moOIcsxXh/5FUKBtFrXA6B+Nk/ZyptLI=";
-  #};
-
-  #stylix.polarity = "dark";
-
-  #stylix.opacity = {
-  #terminal = 0.70;
-  #applications = 0.70;
-  #popups = 0.50;
-  #desktop = 0.80;
-  #};
-
-  #stylix.targets = {
-  #waybar.enableLeftBackColors = true;
-  #waybar.enableRightBackColors = true;
-  #};
 
 
   home.username = "nixos";
@@ -66,12 +41,11 @@ in
     nerdfonts
 
     (pkgs.writeShellScriptBin "my-custom-hello" ''
-      echo ${stylix}
       echo "Hello, ${config.home.username}!"
     '')
 
-    waybar
-    dunst
+    libnotify
+    swww
   ];
 
   home.activation.copyLab = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

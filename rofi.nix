@@ -13,7 +13,7 @@
         # };
         inherit (config.lib.formats.rasi) mkLiteral;
       in
-      {
+      lib.mkDefault {
         "entry" = {
           placeholder = "Let it run";
         };
@@ -22,28 +22,28 @@
 
 
         element = {
-          orientation = "horizontal";
+          orientation = "vertical";
           children = [ "element-text" "element-icon" ];
           spacing = mkLiteral "5 px";
         };
 
-        #"*" = {
-        #background-color = mkLiteral "#000000";
-        #foreground-color = mkLiteral "rgba ( 250, 251, 252, 100 % )";
-        #border-color = mkLiteral "#FFFFFF";
-        #width = 512;
-        #};
+        "*" = {
+        background-color = mkLiteral "#000000";
+        foreground-color = mkLiteral "rgba ( 250, 251, 252, 100 % )";
+        border-color = mkLiteral "#FFFFFF";
+        width = 512;
+        };
 
-        #"#inputbar" = {
-        #children = map mkLiteral [ "prompt" "entry" ];
-        #};
+        "#inputbar" = {
+        children = map mkLiteral [ "prompt" "entry" ];
+        };
 
-        #"#textbox-prompt-colon" = {
-        #expand = false;
-        #str = ":";
-        #margin = mkLiteral "0px 0.3em 0em 0em";
-        #text-color = mkLiteral "@foreground-color";
-        #};
+        "#textbox-prompt-colon" = {
+        expand = false;
+        str = ":";
+        margin = mkLiteral "0px 0.3em 0em 0em";
+        text-color = mkLiteral "@foreground-color";
+        };
       };
   };
 }
