@@ -15,34 +15,40 @@
       in
       lib.mkDefault {
         "entry" = {
-          placeholder = "Let it run";
+          placeholder = "Enter text here";
         };
 
-        "@theme" = "gruvbox-dark";
+        prompt = {
+          placeholder = "Enter text here";
+        };
+
+        "@theme" = "lb";
 
 
         element = {
           orientation = "vertical";
           children = [ "element-text" "element-icon" ];
-          spacing = mkLiteral "5 px";
+          background-color = "#fff";
+          #spacing = mkLiteral "5 px";
         };
 
         "*" = {
-        background-color = mkLiteral "#000000";
-        foreground-color = mkLiteral "rgba ( 250, 251, 252, 100 % )";
-        border-color = mkLiteral "#FFFFFF";
-        width = 512;
+          background-color = mkLiteral "#000000";
+          foreground-color = mkLiteral "rgba ( 250, 251, 252, 100 % )";
+          border-color = mkLiteral "#34C9F4";
+          width = 512;
+          padding-left = mkLiteral "5px";
         };
 
         "#inputbar" = {
-        children = map mkLiteral [ "prompt" "entry" ];
+          children = map mkLiteral [ "prompt" "entry" ];
         };
 
         "#textbox-prompt-colon" = {
-        expand = false;
-        str = ":";
-        margin = mkLiteral "0px 0.3em 0em 0em";
-        text-color = mkLiteral "@foreground-color";
+          expand = false;
+          str = " ==: ";
+          margin = mkLiteral "0px 0.3em 0em 0em";
+          text-color = mkLiteral "@foreground-color";
         };
       };
   };

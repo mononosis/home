@@ -1,6 +1,4 @@
-{ lib, config, pkgs, ... }:
-{
-
+{ lib, config, pkgs, ... }: {
   programs.waybar.settings = {
     maiBa = {
 
@@ -37,7 +35,7 @@
         };
       };
       "hyprland/window" = {
-        format = "👉 {}";
+        format = "🛡️ {}";
         rewrite = {
           "(.*) — Mozilla Firefox" = "🌎 $1";
           "(.*) - fish" = "> [$1]";
@@ -53,16 +51,16 @@
           unlocked = "";
         };
       };
-      "hyprland/mode" = {
-        format = "<span style=\"italic\">{}</span>";
-      };
-      "hyprland/scratchpad" = {
-        format = "{icon} {count}";
-        show-empty = false;
-        format-icons = [ "" "" ];
-        tooltip = true;
-        tooltip-format = "{app}: {title}";
-      };
+      #"hyprland/mode" = {
+        #format = "<span style=\"italic\">{}</span>";
+      #};
+      #"hyprland/scratchpad" = {
+        #format = "{icon} {count}";
+        #show-empty = false;
+        #format-icons = [ "" "" ];
+        #tooltip = true;
+        #tooltip-format = "{app}: {title}";
+      #};
       #"mpd" = {
       #"format" = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
       #"format-disconnected" = "Disconnected ";
@@ -101,7 +99,7 @@
         spacing = 10;
       };
       clock = {
-        timezone = "America/New_York";
+        timezone = "Australia/Melbourne";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         format-alt = "{:%Y-%m-%d}";
       };
