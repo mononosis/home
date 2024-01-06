@@ -79,6 +79,7 @@
   home.packages = with pkgs; [
 
     nix-index
+    brightnessctl
 
     docker-compose
     htop

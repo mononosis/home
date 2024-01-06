@@ -3,8 +3,8 @@
   nvimUserConfig = pkgs.fetchFromGitHub {
     owner = "mononosis";
     repo = "nvim-user-config";
-    rev = "main";
-    sha256 = "sha256-xrSa1TEximBuRtNI5ayzbGjusogQxjZH9byobVL4A48=";
+    rev = "1284c95c43ff4c17f8dd64844cf773348787cdc2";
+    sha256 = "sha256-S6d9KBSKdrvnMM/j21xuM3KlXyHhU4M4qTBJmbLOn5E=";
   };
   nvimUtilsConfig = (pkgs.vimUtils.buildVimPlugin {
     name = "nvim-utils-config";
@@ -38,8 +38,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "nvim-lua";
       repo = "plenary.nvim";
-      rev = "master";
-      sha256 = "sha256-HJCVGYXCgUePhXuC2n85YP/i4KEKCpJl59h/gENQX6I=";
+      rev = "55d9fe89e33efd26f532ef20223e5f9430c8b0c0";
+      sha256 = "sha256-S6d9KBSKdrvnMM/j21xuM3KlXyHhU4M4qTBJmbLOn5E=";
     };
   });
   telescope = (pkgs.vimUtils.buildVimPlugin {

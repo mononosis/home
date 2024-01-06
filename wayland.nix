@@ -42,6 +42,8 @@
 
     bind = $mainMod, F, fullscreen 
     bind = $mainMod, X, exec, copy-region
+    bind = , code:232, exec, brightnessctl set 20%-
+    bind = , code:233, exec, brightnessctl set +20%
     bind = , code:123, exec, pactl set-sink-volume `pactl get-default-sink` +5% 
     bind = , code:122, exec, pactl set-sink-volume `pactl get-default-sink` -5% 
     bind = $mainMod, S, exec, pactl set-sink-mute `pactl get-default-sink` toggle
